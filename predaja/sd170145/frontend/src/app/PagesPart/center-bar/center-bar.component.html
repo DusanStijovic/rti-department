@@ -1,0 +1,47 @@
+<div class="row justify-content-center text-center">
+
+    <div class="col-sm-12 col-md-3 gx-4 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[0], 'btn-outline-warning':!oboji[0]}"
+            (click)="sendMessage('materijali','Predavanja', 0)"> {{'Predavanja'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[1], 'btn-outline-warning':!oboji[1]}"
+            (click)="sendMessage('materijali','Vezbe', 1)"> {{'Vezbe'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[2], 'btn-outline-warning':!oboji[2]}"
+            (click)="sendMessage('materijali','Ispitna pitanja', 2)"> {{'Ispitna pitanja'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[3], 'btn-outline-warning':!oboji[3]}"
+            (click)="sendMessage('materijali','Ispitna resenja', 3)"> {{'Ispitna resenja'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[4], 'btn-outline-warning':!oboji[4]}"
+            (click)="sendMessage('','labovi', 4)">
+            {{'Labovi'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[5], 'btn-outline-warning':!oboji[5]}"
+            (click)="sendMessage('','projekti', 5)">
+            {{'Projekat'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn btn-outline-warning rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[6], 'btn-outline-warning':!oboji[6]}"
+            (click)="sendMessage('','spiskoviKreiraj', 6)">
+            {{'Kreiraj Spisak'| translate}}</a>
+    </div>
+    <div class="col-sm-12 col-md-3 gy-4 d-grid gap-2">
+        <a class="btn btn-outline-warning rounded-pill border-2"
+            [ngClass]="{'btn-warning text-dark': oboji[7], 'btn-outline-warning':!oboji[7]}"
+            (click)="sendMessage('','spiskovi', 7)">
+            {{'Pregledaj spiskove'| translate}}</a>
+    </div>
+</div>

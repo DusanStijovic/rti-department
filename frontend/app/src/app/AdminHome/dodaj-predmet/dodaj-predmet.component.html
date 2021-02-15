@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        {{'Dodavanje predmeta'}}
+    </div>
+    <div class="col-sm-10 text-center">
+        <input type="radio" name="nacinPravljenja" id="" class="form-radio-lg" [(ngModel)]='nacinPravljenja'
+            value='napravi novi'>{{'Napravi novi predmet'| translate}}
+        <input type="radio" name="nacinPravljenja" id="" class="form-radio-lg" [(ngModel)]='nacinPravljenja'
+            value="mapiraj">{{'Mapiraj predmet'|translate}}
+
+        <!-- TO DO -->
+        <!-- <input type="radio" name="nacinPravljenja" id="" class="form-radio-lg" [(ngModel)]='nacinPravljenja'
+            value="razdvoji mapiranje">{{'Razdvoj mapiranje predmeta'|translate}} -->
+
+        <div *ngIf="nacinPravljenja=='napravi novi'">
+            {{'Dodaj predemt'}}
+            <div class="row justify-content-center">
+                <div class="col-sm-10">
+                    <button class="btn btn-outline-warning" (click)="dodaj()"> {{'Dodaj'|translate}}</button>
+                    {{message}}
+                    <div class="border border-warning rounded border-2 p-4 m-4">
+
+                        <div class="text-warning">{{'Name:'| translate}}</div> <input class="form-control mb-3"
+                            type='text' [(ngModel)]='info.name'>
+                        <br />
+                        <div class="text-warning">{{'Sifra:'| translate}}</div> <input class="form-control mb-3"
+                            type='text' [(ngModel)]='info.id'>
+                        <br />
+                        <div class="text-warning">{{'Semestar:'| translate}}</div> <input class="form-control mb-3"
+                            type='text' [(ngModel)]='info.semestar'>
+                        <br />
+                        <div class="text-warning">{{'Tip:'| translate}}
+                            <select name="" id="" [(ngModel)]="info.type" class="form-select">
+                                <option value="izborni" aria-selected="true">{{'izborni' | translate}}</option>
+                                <option value="obavezni">{{'obavezni' | translate}}</option>
+
+                            </select>
+                        </div>
+                        <br />
+                        <div class="text-warning">{{'ESPB:'| translate}}</div> <input class="form-control mb-3"
+                            type='text' [(ngModel)]='info.espb'>
+                        <br />
+                        <div class="text-warning">{{'Laboratorijske vezbe:'| translate}}</div>
+                        <input class="form-check mb-3" type='checkbox' [(ngModel)]='info.haveLab'>
+                        <br />
+                        <div class="text-warning">{{'Odsek:'| translate}}
+                            <select name="" id="" [(ngModel)]="info.department" class="form-select">
+                                <option value="si" aria-selected="true">{{'SI' | translate}}</option>
+                                <option value="rti">{{'RTI' | translate}}</option>
+                                <option value="oo">{{'OO' | translate}}</option>
+                                <option value="master">{{'Master' | translate}}</option>
+                            </select>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+
+                <div class="col-sm-5 col-md-5 border border-warning border-2 m-3 p-3">
+                    <div class="text-warning"> {{'Casovi:'| translate}} </div>
+                    <div class="ms-2">
+                        <input class="form-control mb-3" type='text' [(ngModel)]="subjectClasses"> &nbsp;
+                    </div>
+                </div>
+
+                <div class="col-sm-5 col-md-5 border border-warning border-2 p-3 m-3">
+                    <div class="text-warning"> {{' Raspored obaveza na nedeljnom nivou:' | translate}} </div>
+                    <div class="ms-2">
+                        {{'Predavaja:' | translate}}<input class="form-control mb-3" type='text'
+                            [(ngModel)]='info.weekly.lecture'>
+                        <br />
+                        {{'Vezbe:' | translate}}<input class="form-control mb-3" type='text'
+                            [(ngModel)]='info.weekly.exercise'>
+                        <br />
+                        {{'Lab:' | translate}}<input class="form-control mb-3" type='text'
+                            [(ngModel)]='info.weekly.lab'>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-10">
+
+                    <div class="card-body border border-warning border-2 rouned p-4 m-3">
+                        <p class="text-warning"> {{'Propozicije: '}} </p>
+                        <div class="ms-2 text-dark">
+                            <ckeditor [editor]="Editor1" [(ngModel)]='info.propositions'></ckeditor>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-10">
+                    <div class="border border-warning border-2 rouned p-4 m-3">
+                        <p class="text-warning"> {{'Cilj predmeta' | translate}}</p>
+                        <div class="ms-2 text-dark">
+                            <ckeditor [editor]="Editor1" [(ngModel)]='info.subjectGoal'></ckeditor>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="nacinPravljenja=='mapiraj'">
+            {{'Mapiraj'}}
+            <br>
+            <span class="text-warning"> {{message}}</span>
+            <div class="row justify-content-center">
+                <div class="col-md-5 gy-4">
+                    {{'Sifra predmeta'}}
+                    <input type="text" name="" id="" class="form-control" [(ngModel)]="subjectMapping.subject_id">
+                </div>
+                <div class="col-md-5 gy-4">
+                    {{'Izaberi odsek'}}
+                    <select name="" id="" class="form-select" [(ngModel)]="subjectMapping.department">
+                        <option value="si">{{'SI' | translate}}</option>
+                        <option value="rti">{{'RTI'|translate}}</option>
+                        <option value="oo">{{'OO'|translate}}</option>
+                    </select>
+                </div>
+                <div class="col-md-10 gy-4">
+                    {{'Izaberite predmet na koji se mapira'}}
+                    <select name="" id="" class="form-select" [(ngModel)]='subjectMapping.mapped_subject_id'>
+                        <option *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.id|translate}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-10 gy-4">
+                    <button class="btn btn-warning" (click)='mapiraj()'>{{'Mapiraj predmet' | translate}}</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

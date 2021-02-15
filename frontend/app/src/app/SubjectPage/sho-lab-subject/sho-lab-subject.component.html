@@ -1,0 +1,22 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h2 class="text-warning text-center m-4">
+            {{'Informacije o lab vezbama' | translate}}
+        </h2>
+    </div>
+    <div class="col-sm-10 border border-warning border-3 p-4 m-4">
+        {{'Opte informacije: ' | translate}}
+        <br />
+        {{labInfo}}
+    </div>
+    <div class="col-sm-10 m-4">
+        {{'Broj lab vezbi: ' | translate}} {{labNumber}}
+    </div>
+
+    <div *ngFor="let lab of labs" class="col-sm-10 m-4">
+
+        <app-one-lab-info [labName]="lab.labName" [description]="lab.description"
+            [labMaterials]="lab.materials" [baseUrl]="baseUrl" [lab_id]="lab._id" [moreOptions]='false'>
+        </app-one-lab-info>
+    </div>
+</div>

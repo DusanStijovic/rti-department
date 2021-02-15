@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <div class="container-fluid">
+      <img src="{{pictureUrl}}" width="30" height="30" class="d-inline-block align-top" alt="">
+      RTI Katedra
+    </div>
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav" order1>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['pocetna']" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'HomePage' | translate }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['listaZaposlenih']" href="#" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'Employees' | translate }} </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['obavestenja']" href="#" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'Information' | translate }}</a>
+        </li>
+        <li class="nav-item dropdown" [class]="{'bg-warning': obojiDropOdsek()}">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+            [class.text-dark]="obojiDropOdsek()" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}">
+            {{ 'Bachelor' | translate }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <a class="dropdown-item" #homeLink1 [routerLink]="['/predmeti', 'rti']" href="#"
+              routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}">{{ 'RTI' | translate }}</a>
+            <a class="dropdown-item" #homeLink2 [routerLink]="['/predmeti', 'si']" href="#"
+              routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}">{{ 'SI' | translate }}</a>
+            <a class="dropdown-item" #homeLink3 [routerLink]="['/predmeti', 'oo']" href="#"
+              routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}">{{ 'Another Departments' |
+              translate }}</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" [routerLink]="['/predmeti', 'master']" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'Mastrer' | translate }}</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/projekti']" href="#" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'Projects' | translate }}</a>
+        </li>
+        <li class="nav-item dropdown" [class]="{'bg-warning': obojiDropNauka()}" routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" [class.bg-warning]='obojiDropDown[0]' href="#" id='naukaDropDown'
+            role="button" data-bs-toggle="dropdown" [class.text-dark]="obojiDropNauka()" aria-expanded="false">
+            {{ 'Science' | translate }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="naukaDropDown">
+            <a class="dropdown-item" [routerLink]="['/istrazivanja']" href="#" routerLinkActive="bg-warning text-dark"
+              routerLinkActiveOptions="{exact:true}">{{ 'Research' | translate }}</a>
+            <a class="dropdown-item" [routerLink]="['/uradjeniprojekti']" href="#"
+              routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}">{{ 'Projects' | translate
+              }}</a>
+          </div>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/kontakt']" href="#" routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}">{{ 'Contact' | translate }}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink2" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false" routerLinkActive="active">
+            {{ 'Language' | translate }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink2">
+            <a class="dropdown-item" [class.bg-warning]='obojiJezik[0]' routerLinkActive="bg-warning text-dark"
+              routerLinkActiveOptions="{exact:true}" (click)='changeLanguage("engleski")'>{{ 'ENGLISH' | translate
+              }}</a>
+            <a class="dropdown-item" [class.bg-warning]='obojiJezik[1]' routerLinkActive="bg-warning text-dark"
+              routerLinkActiveOptions="{exact:true}" (click)='changeLanguage("srpski_latinica")'>{{ 'SR_LATINICA' |
+              translate }}</a>
+            <a class="dropdown-item" [class.bg-warning]='obojiJezik[2]' routerLinkActive="bg-warning text-dark"
+              routerLinkActiveOptions="{exact:true}" (click)='changeLanguage("srpski_cirilica")'>{{ 'SR_CIRILICA' |
+              translate }}</a>
+          </div>
+        </li>
+        <li class="nav-item"><a routerLinkActive="bg-warning text-dark" routerLinkActiveOptions="{exact:true}"
+            [routerLink]="['/register']" class="nav-link" href="#"> {{ 'Sign Up' | translate }} </a>
+        </li>
+        <li *ngIf='logInUser.isLogIn' class="nav-item ms-1" routerLinkActive="bg-warning text-dark"
+          routerLinkActiveOptions="{exact:true}"><button (click)="homePage()"
+            class="nav-link bg-dark rounded border-warning border-3 me-2"> {{ 'HomePage' | translate }} </button></li>
+        <li *ngIf='!logInUser.isLogIn' class="nav-item ms-1"><a routerLinkActive="bg-warning text-dark"
+            routerLinkActiveOptions="{exact:true}" [routerLink]="['pocetna']" class="nav-link" href="#"> {{ 'Login' |
+            translate }} </a></li>
+        <li *ngIf='logInUser.isLogIn' class="nav-item ms-1" routerLinkActive="bg-warning text-dark"
+          routerLinkActiveOptions="{exact:true}"><button (click)="logout()"
+            class="nav-link bg-dark rounded border-warning border-3"> {{ 'SignOut' | translate }} </button></li>
+      </ul>
+    </div>
+  </div>
+</nav>

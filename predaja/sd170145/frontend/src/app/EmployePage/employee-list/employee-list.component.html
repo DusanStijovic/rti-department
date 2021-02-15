@@ -1,0 +1,16 @@
+<div class = "container">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 text-center">
+            <h2 class="text-warning">{{'Lista zaposlenih' | translate}}</h2>
+        </div>
+        <div *ngFor="let item of employeeList" class="col-sm-4 mt-4 p-3">
+                <app-employee-card-info 
+                [name]="item.employee.firstName + ' ' + item.employee.lastName"
+                [role]="item.employee.title"
+                [subjects]="item.subjects"
+                [readMore]="item.employee._id" 
+                >
+                </app-employee-card-info>
+        </div>
+    </div>
+</div>

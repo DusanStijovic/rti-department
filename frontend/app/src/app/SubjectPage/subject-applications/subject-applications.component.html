@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h2>
+            {{'Spiskovi u vezi obaveza na predmetu:'}}
+        </h2>
+    </div>
+    <div class="col-sm-10">
+        <table *ngIf="subjectApplication && subjectApplication.length!=0"
+            class="table table-dark text-center table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">{{'Ime' | translate}}</th>
+                    <th scope="col">{{'Vreme' | translate}} </th>
+                    <th scope="col">{{'Mesto' | translate}} </th>
+                    <th scope="col">{{"Ostalo mesta" | translate}}</th>
+                    <th scope="col">{{"Uploudujte rad" | translate}}</th>
+                    <th scope="col">{{"Rok" | translate}}</th>
+                    <th scope="col">{{'Link' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let oneApply of subjectApplication">
+                    <td>{{oneApply.name}}</td>
+                    <td>{{oneApply.time | date:'medium'}}</td>
+                    <td>{{oneApply.place}}</td>
+                    <td *ngIf="oneApply.maxApply!=-1">{{oneApply.currentApply}}/{{oneApply.maxApply}}</td>
+                    <td *ngIf="oneApply.maxApply==-1">/</td>
+                    <td *ngIf="oneApply.uploadFileNedded">
+                        <input name='file' id="file" ng2FileSelect [uploader]="uploader" class="form-control "
+                            type="file" />
+                    </td>
+                    <td *ngIf="!oneApply.uploadFileNedded">/</td>
+                    <td *ngIf="!oneApply.deadline">/</td>
+                    <td *ngIf="oneApply.deadline">{{oneApply.deadline | date}}</td>
+                    <td *ngIf="!checkIfCanApply(oneApply)"> {{showText(oneApply) | translate}} </td>
+                    <td *ngIf="checkIfCanApply(oneApply)">
+                        <button class="btn btn-outline-warning rounded" (click)="prijaviSe(oneApply)">{{ "Prijavi se" |
+                            translate}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="!subjectApplication || subjectApplication.length==0"
+            class="border border-warning rounded border-2 text-center m-4 p-4">
+            {{"Nema spiskova" | translate}}
+        </div>
+    </div>
+  
+</div>
+
+<div class="row justify-content-center">
+    {{message}}
+</div>

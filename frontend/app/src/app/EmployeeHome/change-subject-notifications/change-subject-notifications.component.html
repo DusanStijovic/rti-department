@@ -1,0 +1,63 @@
+<div class="row justify content">
+    <div class="col-sm-10 gy-4">
+        {{'Naslov vesti:' | translate}}
+        <input type="text" class="form-control" [(ngModel)]="subjectNotif.title">
+    </div>
+    <div class="col-sm-10 gy-4 text-dark">
+        <p class="text-white">{{'Sadrzaj vesti:' | translate}}</p>
+        <ckeditor [editor]="Editor" [(ngModel)]="subjectNotif.content"></ckeditor>
+    </div>
+    <div class="col-sm-10 gy-4">
+        {{'Datum postavka:' | translate}}
+        <input type="datetime-local" class="form-control"  [(ngModel)]="subjectNotif.dateCreation">
+        <input disabled type="datetime" class="form-control" [value]="subjectNotif.dateCreation">
+    </div>
+    <div class="col-sm-10 text-dark">
+        {{'Izaberite na koje predmete se odnosi vest:' | translate}}
+        <br />
+        <br />
+        <select *ngIf="subjectConnected.length>0" [(ngModel)]="choosenSubject" name="" multiple size="5" id=""
+            class="form-select">
+            <option *ngFor="let subject of subjectConnected" value="{{subject.subject}}">{{subject.subject}}</option>
+        </select>
+        <div *ngIf="subjectConnected.length<=0" class="text-white">
+            {{'Niste angazovani ni na jednom predmetu'}}
+        </div>
+    </div>
+    <div class="col-sm-10 text-dark">
+        {{'Dodajte fajlove:' | translate}}
+        <br />
+        <br />
+        <input type="file" multiple class="form-control" #file ng2FileSelect [uploader]='uploader'>
+    </div>
+
+    <div class="col-sm-10 gy-4">
+        <button (click)="azurirajVest()" class="btn btn-warning">{{'azuriraj vest'| translate}}</button>
+    </div>
+    <div class="col-sm-10 gy-4">
+        {{message}}
+    </div>
+    <div class="col-sm-10 text-white">
+        {{'Dodati fajlovi' | translate}}
+        <br />
+        <br />
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">{{'Ime' | translate}}</th>
+                    <th scope="col">{{'Obrisi' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let file of subjectNotif.materials" class="col-sm-12">
+                    <td>{{file}}</td>
+                    <td>
+                        <button class="btn btn-outline-warning" (click)='obrisiObavestenjeMaterijal(file)'>
+                            {{'Obrisi dodatak'}}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {{message}}
+    </div>

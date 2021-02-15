@@ -1,0 +1,1 @@
+{"version":3,"file":"StudentSubject.js","sourceRoot":"","sources":["../../src/Seed/StudentSubject.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;AAAA,6EAAqD;AAIrD,MAAM,eAAe,GAAG,EAEvB,CAAA;AAID,SAAe,kBAAkB;;QAC7B,KAAK,MAAM,OAAO,IAAI,eAAe,EAAE;YACnC,IAAI,UAAU,GAAG,IAAI,wBAAc,CAAC,OAAO,CAAC,CAAC;YAC7C,MAAM,UAAU,CAAC,IAAI,EAAE,CAAC;SAC3B;IACL,CAAC;CAAA;AAEO,gDAAkB"}

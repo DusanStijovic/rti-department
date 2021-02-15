@@ -1,0 +1,8 @@
+<div class="row justify-content-center mt-3 text-center">
+    <h1 class="text-warning">{{'Projekti koje mozete raditi' | translate}}</h1>
+    <div *ngFor="let project of offeredProjects" class="col-sm-8 mt-2">
+        <app-offered-project-card [title]="project.title" [text]="project.description" [link]="project.readMore"
+            [type]="project.type">
+        </app-offered-project-card>
+    </div>
+</div>

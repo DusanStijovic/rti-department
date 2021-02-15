@@ -1,0 +1,7 @@
+<div class="row justify-content-center text-center">
+    <h1 class="text-orange">{{'Projekti koje su radili nasi zaposleni' | translate}}</h1>
+    <div *ngFor="let project of employeeProjects" class="col-sm-8 p-2">
+        <app-employee-project-card [title]="project.title" [text]="project.description" [link]="project.readMore"
+            [peopleNames]="project.authors"></app-employee-project-card>
+    </div>
+</div>

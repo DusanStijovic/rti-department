@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h3>{{'Opte informacije o predmetu'}}</h3>
+        <div class="border border-warning rounded border-2 p-4 m-4">
+            <div class="text-warning">{{'Name:'| translate}}</div> {{info.name}}
+            <br />
+            <div class="text-warning">{{'Sifra:'| translate}}</div>{{info.id}}
+            <br />
+            <div class="text-warning">{{'Semestar:'| translate}}</div>{{info.semestar}}
+            <br />
+            <div class="text-warning">{{'Tip:'| translate}}</div>{{info.type}}
+            <br />
+            <div class="text-warning">{{'ESPB:'| translate}}</div>{{info.espb}}
+            <br />
+            <div class="text-warning">{{'Laboratorijske vezbe:'| translate}}</div>{{info.haveLab==true?"da":"ne"}}
+            <br />
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 border border-warning border-2 m-3 p-3">
+        <div class="text-warning"> {{'Casovi:'| translate}} </div>
+        <div class="ms-2">
+            <div *ngFor="let item of info.classTime">
+                {{item | translate}} &nbsp;
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 border border-warning border-2 p-3 m-3">
+        <div class="text-warning"> {{'Raspored obaveza na nedeljnom nivou:' | translate}} </div>
+        <div class="ms-2">
+            {{'Predavaja:' | translate}} {{info.weekly.lecture}}
+            <br />
+            {{'Vezbe:' | translate}} {{info.weekly.exercise}}
+            <br />
+            {{'Lab:' | translate}} {{info.weekly.lab}}
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+
+        <div class="card-body border border-warning border-2 rouned p-4 m-3">
+            <p class="text-warning"> {{'Propozicije: '}} </p>
+            <div class="ms-2" [innerHTML]="info.propositions | translate"></div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <div class="border border-warning border-2 rouned p-4 m-3">
+            <p class="text-warning"> {{'Cilj predmeta' | translate}}</p>
+            <div class="ms-2" [innerHTML]="info.subjectGoal | translate"></div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-12 col-md-4">
+        <div class="border border-warning border-2 rouned p-4 m-3">
+            <p class="text-warning"> {{'Zaposleni angazovani na predmetu' | translate}}</p>
+            <div *ngFor="let employee of employees" class="text-white my-2">
+                <a [routerLink]="[baseUrl, employee.idEmployee]" class="btn btn-outline-warning text-white">
+                    {{employee.employeeName}} </a>
+            </div>
+        </div>
+    </div>
+</div>

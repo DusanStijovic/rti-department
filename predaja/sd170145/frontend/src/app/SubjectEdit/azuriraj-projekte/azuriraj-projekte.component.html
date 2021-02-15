@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h2 class="text-warning">
+            {{'Projekti' | translate}}
+        </h2>
+        <hr class="border border-4 border-warning" />
+
+    </div>
+    <div class="col-sm-10 mb-4">
+        {{'Prikazi projekte:'}}
+        <input type="checkbox" class="form-check" name="" id="" (change)="pikaziProjekte()" [(ngModel)]="showProjects">
+    </div>
+    <div class="col-sm-10 border border-3 border-warning rounded p-4 mb-4 mt-4 text-center"
+        *ngFor="let project of projects.projects">
+        <button class="btn btn-warning" (click)="obrisiProjekat(project._id)">{{'Obrisi projekat'| translate}}</button>
+        &nbsp;
+        <button class="btn btn-warning" (click)="azurirajInformacijeOProjektu(project)">{{'Azuriraj informacije'|
+            translate}}</button>
+        <h4>{{'Info: '| translate}}</h4>
+        <textarea name="" id="" cols="150" rows="5" class="form-control" [(ngModel)]="project.info"></textarea>
+        <br />
+        <app-azuriraj-projekte-table [baseUrl]="baseUrl" [emptyText]="['Nema materijala']" [projectId]="project._id"
+            [buttonAction]="['Skini materijale']" [materials]="project.materials" [moreOprions]=true>
+        </app-azuriraj-projekte-table>
+        {{message}}
+        <hr class="border border-4 border-warning" />
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-3 text-left">
+        <button class="btn btn-warning" (click)='dodajProjekat()'>{{'Dodaj projekat'}}</button>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-sm-12 text-center m-3">
+        <h1 class="text-white">{{'Informacije o korisniku'}}</h1>
+    </div>
+    <div class="col-sm-3 text-white">
+        <i class="bi bi-person-fill text-warning"></i> {{employee.employee.firstName}} &nbsp;
+        {{employee.employee.lastName}}
+        <br />
+        <i class="bi bi-geo-alt-fill text-warning"></i> {{employee.employee.address}}
+        <br />
+        <i class="bi bi-telephone-fill text-warning"></i> {{employee.employee.phoneNumber}}
+        <br />
+        <i class="bi bi-chevron-right text-warning"></i> {{employee.employee.roomNumber}}
+        <br />
+        <div><i class="bi bi-link text-warning"></i> <a class="link-warning btn" href="{{employee.employee.page}}">
+                {{employee.employee.page}}</a></div>
+        <p>{{employee.employee.title}}</p>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-sm-3 text-warning">
+        <div class="card bg-dark text-white border-warning rounded p-2">
+            <div class="card-title "> <i class="text-warning bi bi-card-text"> {{'Licne informacije :' | translate}}</i>
+            </div>
+            <div class="card-body">
+                <p *ngIf="employee.employee.bio" class="card-text">
+                    {{employee.employee.bio }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 text-warning">
+        <div class="card bg-dark text-white border-warning rounded p-2 m-2">
+            <div class="card-title "> <i class="text-warning bi bi-card-text"> {{'Predmeti :' | translate}}</i>
+            </div>
+            <div class="card-body">
+                <div *ngFor="let subject of employee.subjects">
+                    <div *ngIf="!shoudlShow(subject)"> {{subject}} <br /></div>
+                    <div *ngIf="shoudlShow(subject)"> <a class="btn btn-outline-warning mb-2"
+                            [routerLink]="['/predmet',subject,'Obavestenja']">{{subject}}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

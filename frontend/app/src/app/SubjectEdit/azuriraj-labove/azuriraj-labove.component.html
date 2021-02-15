@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h2 class="text-warning text-center m-4">
+            {{'Informacije o lab vezbama' | translate}}
+        </h2>
+        <br />
+        <br />
+        <textarea class="form-control" [(ngModel)]="labInfo"></textarea>
+    </div>
+
+    <div class="col-sm-10 m-4">
+        {{'Prikazi labove'}}
+        <br />
+        <input type="checkbox" name="" id="" class="form-check" [(ngModel)]="showLabs" (change)="change()">
+    </div>
+
+    <div class="col-sm-10 m-4">
+        {{'Broj lab vezbi: ' | translate}}
+        <input type="number" name="" id="" class="form-control" [(ngModel)]="labNumber" disabled>
+    </div>
+
+    <div class="col-sm-10 m-4">
+        <button class="btn btn-warning" (click)="azurirajOpsteInformacijeOLabu()"> {{"Auriraj opste informacije o labu"
+            | translate}}</button>
+        <br />
+        {{message2}}
+    </div>
+
+    <div *ngFor="let lab of labs" class="col-sm-10 m-4">
+        <div class="col-sm-6 gy-3">
+            <button class="btn btn-warning" (click)="obrisi(lab._id)"> {{'Obrisi lab'}}</button>
+        </div>
+        <br />
+        <app-one-lab-info [labName]="lab.labName" [description]="lab.description"
+            [labMaterials]="lab.materials" [baseUrl]="baseUrl" [moreOptions]='true' [lab_id]=lab._id>
+        </app-one-lab-info>
+        <hr class="border border-warning border-4" />
+    </div>
+    <div class="col-sm-10 m-4">
+        <button class="btn btn-warning" (click)='dodajLab()'>{{'Dodaj lab'}}</button>
+    </div>
+    <div class="col-sm-10 m-4">
+        {{message}}
+    </div>
+</div>

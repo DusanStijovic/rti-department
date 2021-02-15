@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+    <div class="col-sm-4">
+        <app-side-bar
+        [sideBarTitle] = "sideBarTitle"
+        [sideBarOptions]="sideBarOptions"
+        (messageEvent) ="navigate($event)"
+        >
+        </app-side-bar>
+    </div>
+
+    <div class="col-sm-8">
+        <router-outlet>
+        </router-outlet>
+    </div>
+</div>

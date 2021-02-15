@@ -1,0 +1,93 @@
+<table *ngIf="materials && materials.length!=0" class="table table-dark text-center table-hover">
+    <thead>
+        <tr>
+            <th *ngIf="moreOprions">
+                {{'Redni broj' | translate}}
+            </th>
+            <th scope="col">Ime</th>
+            <th scope="col">Link</th>
+            <th *ngIf="moreOprions">
+                {{'Tip fajla' | translate}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{'Ime zaposlenog' | translate}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{'Velicina' | translate}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{'Datum postavljanja' | translate}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{'Obrisi' | translate}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let material of materials">
+            <td *ngIf="moreOprions"> <input type="number" class="form-control" [(ngModel)]="material.number"> </td>
+            <td>{{material.name}}</td>
+            <td><button (click)="download(material.link)" class="btn btn-warning rounded">{{ buttonAction |
+                    translate}}</button></td>
+            <th *ngIf="moreOprions">
+                {{material.format}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{material.employee}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{material.size}}
+            </th>
+            <th *ngIf="moreOprions">
+                {{material.date | date:'medium'}}
+            </th>
+            <td *ngIf="moreOprions"><button class="btn btn-outline-warning" (click)="obrisi(material.link)"> {{'Obrisi'
+                    |
+                    translate}}</button> </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div *ngIf="!materials || materials.length==0" class="border border-warning rounded border-2 text-center m-4 p-4">
+    {{emptyText | translate}}
+</div>
+
+
+{{message}}
+<div *ngIf="moreOprions" class="row justify-content-between">
+    <div class="col-sm-2">
+        <div class="mb-3">
+            {{'Broj' | translate}}
+            <input type="number" class="form-control" [(ngModel)]="newMatInfo.number">
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="mb-3">
+            {{'Ime materijala' | translate}}
+            <input type="text" class="form-control" [(ngModel)]="newMatInfo.name">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="mb-3">
+            {{'Fajl' | translate}}
+            <input type="file" ng2FileSelect [uploader]='uploader' class="form-control">
+        </div>
+    </div>
+    <hr />
+    <div class="col-sm-2">
+        <div class="mb-3">
+            {{'Dodaj' | translate}}
+            <br />
+            <button class="btn btn-outline-warning" (click)="dodaj()">{{'Dodaj materijal' |
+                translate}}</button>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="mb-3">
+            {{'Azuriraj' | translate}}
+            <br />
+            <button class="btn btn-outline-warning" (click)="azurirajMaterijale()">{{'Azuriraj materijale' | translate}}</button>
+        </div>
+    </div>
+</div>

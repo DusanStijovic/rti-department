@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 600px;">
+        <div class="col-sm-12 col-md-4">
+            <div *ngFor="let person of contactPerson">
+                <app-contact-info [position]='person.position' [name]='person.name' [phone]='person.phone'
+                    [mail]='person.mail' [icons]='[person.icon]'>
+
+                </app-contact-info>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <app-google-map></app-google-map>
+        </div>
+    </div>
+</div>

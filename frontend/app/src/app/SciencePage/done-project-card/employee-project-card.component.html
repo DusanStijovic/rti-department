@@ -1,0 +1,15 @@
+<div class="card text-center bg-dark border-warning rounded p-2 border-2 mt-1 mb-2">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{text}}</p>
+        <a *ngIf='link' href="{{link}}" class=" btn btn-warning">{{'Procitaj vise' | translate}}</a>
+    </div>
+    <div class="card-footer text-muted">
+        {{'Ucestvovali' | translate}}
+        <div *ngFor="let item of peopleNames">
+                {{item}}
+        </div>
+    </div>
+</div>

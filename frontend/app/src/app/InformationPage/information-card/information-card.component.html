@@ -1,0 +1,12 @@
+<div class="card text-center bg-dark border-warning rounded border-2 mt-3">
+    <div class="card-header">
+        {{title | translate}}
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{text | translate}}</p>
+        <a *ngIf='link' href="{{link}}" class=" btn btn-warning">{{'Procitaj vise' | translate}}</a>
+    </div>
+    <div class="card-footer text-muted">
+        Objavljeno: {{date | date: 'medium'}}
+    </div>
+</div>

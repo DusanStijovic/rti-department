@@ -1,0 +1,24 @@
+<div class="border border-warning border-3 rounded p-3">
+    <div class="form-group">
+        <div class="mb-3">
+            <label for="username" class="form-label">{{ 'Username' | translate }}</label>
+            <div class="input-group">
+                <div class="input-group-text">
+                    <img src="assets/icons/person-fill.svg" alt="">
+                </div>
+                <input type="text" class="form-control" id="username" [(ngModel)]='username' ng-required="true">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">{{'Password' | translate }}</label>
+            <div class="input-group">
+                <div class="input-group-text"> <img src="assets/icons/lock-fill.svg" alt=""></div>
+                <input type="password" class="form-control" id="password" [(ngModel)]='password' ng-required="true">
+            </div>
+        </div>
+        <div class="mb-3 ">
+            <button class="btn btn-warning" (click)='login()'>{{ 'Login' | translate }}</button>
+            <p class="text-warning fw-bold">{{message}}</p>
+        </div>
+    </div>
+</div>

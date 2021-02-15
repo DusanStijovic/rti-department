@@ -1,0 +1,66 @@
+<div class='container'>
+    <div class="row justify-content-center align-items-center" style="height: 600px;">
+        <div class="col-sm-12 text-center">
+            <h2 class="text-warning">{{'Registracija studenta' | translate}}</h2>
+        </div>
+        <div class="col-sm-6">
+            <div>
+                <div class="form">
+                    <div class="mb-3 row">
+                        <label for="username" class="form-label">{{ 'First name' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <img src="assets/icons/person-fill.svg" alt="">
+                            </div>
+                            <input type="text" class="form-control" id="firstname" [(ngModel)]='student.firstName'>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">{{ 'Last name' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <img src="assets/icons/person-fill.svg" alt="">
+                            </div>
+                            <input type="text" class="form-control" id="lastname" [(ngModel)]='student.lastName'>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">{{'Password' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text"> <img src="assets/icons/lock-fill.svg" alt=""></div>
+                            <input type="password" class="form-control" id="password" [(ngModel)]='student.password'>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="index" class="form-label">{{ 'Index' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <img src="assets/icons/person-fill.svg" alt="">
+                            </div>
+                            <input type="text" class="form-control" id="index" [(ngModel)]='student.index'>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="studytype" class="form-label">{{ 'Study type' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+
+                            </div>
+                            <select class="browser-default form-select" [(ngModel)]='student.studyType' id='studytype'>
+                                <option value='d'>{{'baschelor' | translate}}</option>
+                                <option value="m">{{'master' | translate}}</option>
+                                <option value="p">{{'phd' | translate}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-warning" (click)="register()">{{ 'Register' | translate }}</button>
+                    </div>
+                </div>
+                <p class="text-warning">{{message | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+
+    <div class="row justify-content-center">
+        <div class="col-sm-12 text-center">
+            <h1 class=" text-warning fw-bold">{{'Obavestenja o predmetu' | translate}}</h1>
+        </div>
+        <div *ngFor="let info of subjectNotifs" class="col-sm-10">
+            <app-subject-information-card [title]='info.title' [text]='info.content' [links]='info.materials'
+                [date]='info.dateCreation' [showStar] = "checkIfShouldShow(info.dateCreation)"
+                [subjectCode] = 'id'
+                
+                ></app-subject-information-card>
+        </div>
+        <app-subject-information-card *ngIf="!subjectNotifs || subjectNotifs.length==0" text='Nema obavestenja'>
+        </app-subject-information-card>
+    </div>

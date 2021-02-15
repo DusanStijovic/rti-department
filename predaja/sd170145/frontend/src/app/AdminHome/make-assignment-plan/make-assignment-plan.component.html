@@ -1,0 +1,53 @@
+<div class="row justify-content">
+    <div class="col-sm-10 gy-4">
+        <h2> {{'Izaberite predmet' | translate}}</h2>
+    </div>
+    <div class="col-sm-10 gy-4">
+        <select name="" id="" class="form-select" value='' (change)='izabranPredmet($event.target.value)'>
+            <option value="Izaberite"> {{'Izaberite predmet'}}  </option>
+            <option *ngFor="let subject of subjects" value="{{subject}}">{{subject}} </option>
+        </select>
+    </div>
+
+    <div class="col-sm-10 gy-4">
+        {{'Izaberite broj grupa' | translate}}
+    </div>
+    <div class="col-sm-3">
+        <input type="number" class="form-control" [(ngModel)]='brojGrupa' />
+    </div>
+    <div class="col-sm-3">
+        <button class="btn btn-outline-warning" (click)="podeliNaGrupe()">{{'Podeli na grupe'| translate}}</button>
+    </div>
+    <div class="col-sm-3">
+        <button class="btn btn-outline-warning" (click)="dodajGrupu()">{{'Dodaj grupu'| translate}}</button>
+    </div>
+    <div class="col-sm-3">
+        <button class="btn btn-outline-warning" (click)="azuriraj()">{{'Azuriraj grupe'| translate}}</button>
+    </div>
+    <div class="col-sm-10">
+        {{message}}
+    </div>
+
+    <div class="col-sm-10 gy-4">
+        {{'Trenutno angazovanje na predmetu' | translate}}
+        <div *ngFor="let group of subjectAssigmnetPlan.group" class="row-justify-content-center">
+            <div class="col-sm-10 gy-4">
+                <div class="mb-3">
+                    {{'Ime grupe:' | translate}}
+                    <input type="text" [(ngModel)]="group.name" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <select name="" class="form-select" multiple size='5' [(ngModel)]="group.employees">
+                        <option *ngFor="let employee of employees" [value]="employee">{{employee}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-outline-warning" (click)="obrisi(group._id)">{{'Obrisi grupu' |
+                        translate}}</button>
+                </div>
+                <hr class="border border-warning border-4">
+            </div>
+        </div>
+    </div>
+
+</div>

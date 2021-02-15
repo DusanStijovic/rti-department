@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h2 class="text-warning">
+            {{'Projekti' | translate}}
+        </h2>
+    </div>
+    <div class="col-sm-10 mb-4">
+
+    </div>
+    <div class="col-sm-10 border border-3 border-warning rounded p-4 mb-4 mt-4" *ngFor="let project of projects.projects">
+        <h4>{{'Info: '| translate}}{{project.info}}</h4>
+        <br/>
+        <app-subject-materials-table
+        [baseUrl] = "baseUrl"
+        [emptyText] = "['Nema materijala']"
+        [buttonAction]="['Skini materijale']"
+        [materials] = "project.materials"
+
+        >
+
+        </app-subject-materials-table>
+    </div>
+</div>

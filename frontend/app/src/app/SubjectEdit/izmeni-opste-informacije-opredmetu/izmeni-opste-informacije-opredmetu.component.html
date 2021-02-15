@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <h3>{{'Opte informacije o predmetu'}}</h3>
+        <button class="btn btn-outline-warning" (click)="azuriraj()"> {{'Azuriraj'|translate}}</button>
+        {{message}}
+        <div class="border border-warning rounded border-2 p-4 m-4">
+
+            <div class="text-warning">{{'Name:'| translate}}</div> <input class="form-control mb-3" type='text'
+                [(ngModel)]='info.name'>
+            <br />
+            <div class="text-warning">{{'Sifra:'| translate}}</div> <input class="form-control mb-3" type='text'
+                [(ngModel)]='info.id'>
+            <br />
+            <div class="text-warning">{{'Semestar:'| translate}}</div> <input class="form-control mb-3" type='text'
+                [(ngModel)]='info.semestar'>
+            <br />
+            <div class="text-warning">{{'Tip:'| translate}}</div><select name="" id="" [(ngModel)]="info.type"
+                class="form-select">
+                <option value="izborni" aria-selected="true">{{'izborni' | translate}}</option>
+                <option value="obavezni">{{'obavezni' | translate}}</option>
+
+            </select>
+            <br />
+            <div class="text-warning">{{'ESPB:'| translate}}</div> <input class="form-control mb-3" type='text'
+                [(ngModel)]='info.espb'>
+            <br />
+            <div class="text-warning">{{'Odsek:'| translate}}
+                <select name="" id="" [(ngModel)]="info.department" class="form-select">
+                    <option value="si" aria-selected="true">{{'SI' | translate}}</option>
+                    <option value="rti">{{'RTI' | translate}}</option>
+                    <option value="oo">{{'OO' | translate}}</option>
+                    <option value="master">{{'Master' | translate}}</option>
+                </select>
+            </div>
+            <div class="text-warning">{{'Laboratorijske vezbe:'| translate}}</div>
+            <input class="form-check mb-3" type='checkbox' [(ngModel)]='info.haveLab'>
+            <br />
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-10 border border-warning border-2 m-3 p-3">
+        <div class="text-warning"> {{'Casovi:'| translate}} </div>
+        <div class="ms-2">
+            <input class="form-control mb-3" type='text' [(ngModel)]="subjectClasses"> &nbsp;
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 border border-warning border-2 p-3 m-3">
+        <div class="text-warning"> {{' Raspored obaveza na nedeljnom nivou:' | translate}} </div>
+        <div class="ms-2">
+            {{'Predavaja:' | translate}}<input class="form-control mb-3" type='text' [(ngModel)]='info.weekly.lecture'>
+            <br />
+            {{'Vezbe:' | translate}}<input class="form-control mb-3" type='text' [(ngModel)]='info.weekly.exercise'>
+            <br />
+            {{'Lab:' | translate}}<input class="form-control mb-3" type='text' [(ngModel)]='info.weekly.lab'>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-10">
+
+        <div class="card-body border border-warning border-2 rouned p-4 m-3">
+            <p class="text-warning"> {{'Propozicije: '}} </p>
+            <div class="ms-2 text-dark">
+                <ckeditor [editor]="Editor1" [(ngModel)]='info.propositions'></ckeditor>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-10">
+        <div class="border border-warning border-2 rouned p-4 m-3">
+            <p class="text-warning"> {{'Cilj predmeta' | translate}}</p>
+            <div class="ms-2 text-dark">
+                <ckeditor [editor]="Editor1" [(ngModel)]='info.subjectGoal'></ckeditor>
+            </div>
+        </div>
+    </div>

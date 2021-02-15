@@ -1,0 +1,15 @@
+<div>
+    <div class="card bg-dark">
+        <div class="card-header">{{sideBarTitle | translate}}</div>
+        <div class="list-group" id="list-tab" role="tablist">
+            <button *ngFor="let item of sideBarOptions; let i = index"   routerLinkActive="active" (click)="sendMessage(item, i)"
+                class= "btn  border border-3 border-warning p-2 rounded-pill mt-3"
+                [ngClass]="{'btn-warning': obojiTrenutnuStranicu[i], 'btn-dark':!obojiTrenutnuStranicu[i] }"
+                data-bs-toggle="list" role="tab"
+                
+                
+                >{{item |
+                translate}}</button>
+        </div>
+    </div>
+</div>

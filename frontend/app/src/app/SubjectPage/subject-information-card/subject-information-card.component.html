@@ -1,0 +1,14 @@
+<div class="card text-center bg-dark border-warning rounded border-2 mt-3">
+    <div class="card-header">
+        {{title | translate}}
+        <div *ngIf="showStar" class="text-center text-warning"><i class="bi bi-star-fill"></i></div>
+    </div>
+    <div class="card-body">
+        <div class="card-text text-white bg-dark" [innerHTML]="text | translate"></div>
+        <button *ngFor="let link of links" (click)='download(link)' class="btn btn-warning me-2">{{link |
+            translate}}</button>
+    </div>
+    <div class="card-footer text-muted">
+        Objavljeno: {{date | date: 'mediumDate'}}
+    </div>
+</div>

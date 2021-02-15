@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+    <div class="col-sm-8 gy-4">
+        <select name="" id="" (change)="promenjenPredmet($event.target.value)" class="form-select">
+            <option value="default"> {{'Izaberite predmet' | translate}}</option>
+            <option *ngFor="let subject of subjects" value="{{subject._id}}">
+                {{subject.subject}}
+            </option>
+        </select>
+    </div>
+    <div class="col-sm-2 gy-4">
+        <button class="btn btn-warning" (click)='pocetna()'> {{'Pocetna predmet'}}</button>
+    </div>
+    <div class="col-sm-10">
+        {{message}}
+    </div>
+    <div class="col-sm-10 gy-4">
+        <app-center-bar (messageEvent)="promeniKomponentu($event)">
+        </app-center-bar>
+    </div>
+</div>
+<div class="row-justify-content-center">
+    <router-outlet></router-outlet>
+</div>

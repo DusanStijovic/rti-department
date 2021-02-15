@@ -1,0 +1,11 @@
+<div class="row justify-content-center">
+    <div class="col-sm-10 text-center">
+        <h2 class="text-warning">{{heading | translate }}</h2>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        <app-subject-materials-table [materials]="materials" [baseUrl]="baseUrl" [buttonAction]="['Skini materijal']"
+            [emptyText]="['Nema materijala']" [moreOprions]='false'></app-subject-materials-table>
+    </div>
+</div>

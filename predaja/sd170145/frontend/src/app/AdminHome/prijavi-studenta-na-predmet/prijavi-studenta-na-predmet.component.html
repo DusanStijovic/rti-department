@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row justify-content-center align-items-end" style="height: 300px;">
+        <div class="col-sm-6">
+            <select name="" multiple size="5" id="" [(ngModel)]="choosenStudent" class="form-select">
+                <option *ngFor="let student of students" value="{{student.username}}">{{student.username}}</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <select name="" multiple size="5" id="" [(ngModel)]="choosenSubject" class="form-select">
+                <option *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.id}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="row justify-row-content text-center">
+        <div class="col-sm-12  gy-4">
+            <button (click)="prijavi()" class="btn btn-warning">{{'Prijavi studenta'}}</button>
+        </div>
+    </div>
+    {{message}}
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-12 gy-4 text-center">
+        <h2>
+            {{'Prijavljeni studenti' | translate}}
+        </h2>
+    </div>
+</div>
+<div class="row justify-content-center text-center">
+    <div class="col-sm-12" *ngFor="let apply of applys">
+        {{apply.userId}} | {{apply.subjectId}}
+    </div>
+</div>

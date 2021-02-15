@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-sm-12 text-center text-warning fw-2 mb-5 mt-5">
+        <h1>{{'Change password'| translate}}</h1>
+    </div>
+    <div class="col-sm-5">
+        <div class="border border-warning border-3 p-4">
+            <div class="bg-dark border-warning">
+                <div class="form-group">
+                    <div class="mb-3">
+                        <label for="oldpassword" class="form-label">{{ 'Old Password' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <img src="assets/icons/person-fill.svg" alt="">
+                            </div>
+                            <input type="password" class="form-control" id="oldpassword" [(ngModel)]='oldPassword'
+                                ng-required="true">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newpassword" class="form-label">{{'New password' | translate }}</label>
+                        <div class="input-group">
+                            <div class="input-group-text"> <img src="assets/icons/lock-fill.svg" alt=""></div>
+                            <input type="password" class="form-control" id="newpassword" [(ngModel)]='newPassword'
+                                ng-required="true">
+                        </div>
+                    </div>
+                    <div class="mb-3 ">
+                        <button class="btn btn-warning" (click)='change()'>{{'Change password'| translate}}</button>
+                        <p class="text-warning fw-bold"></p>
+                    </div>
+                    <p class="text-warning fw-2">{{errorMessage}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

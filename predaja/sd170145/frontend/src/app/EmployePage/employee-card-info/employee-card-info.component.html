@@ -1,0 +1,18 @@
+<div>
+  <div class="card border-warning bg-dark rounded">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{name | translate}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{role | translate}}</h6>
+      <div *ngFor="let subject of subjects">
+        <div *ngIf="!shoudlShow(subject)"> {{subject}} <br /></div>
+        <div *ngIf="shoudlShow(subject)"> <a class="btn btn-outline-warning mb-2"
+            [routerLink]="['/predmet',subject,'Obavestenja']">{{subject}}</a></div>
+      </div>
+      <div class='card-footer'>
+        <a href=" #" [routerLink]="['zaposlen', readMore]" class="card-link btn bg-warning rounded">{{"Detaljnije" |
+          translate}}</a>
+      </div>
+    </div>
+  </div>
+</div>
